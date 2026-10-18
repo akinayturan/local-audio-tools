@@ -1,0 +1,10 @@
+# Source recordings and converted videos
+*.m4a
+*.mp4
+
+# Generated transcripts, subtitles, and processing logs
+/transcript/
+
+# Local macOS and IDE files
+.DS_Store
+.idea/

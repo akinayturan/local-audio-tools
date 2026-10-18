@@ -42,12 +42,75 @@ For other platforms or a Python-based installation, see the [official Whisper se
 
 ## Quick start
 
-Open a terminal in this folder and place your recording beside the scripts, using `voice.m4a` as the filename:
+### 1. Download the project
+
+If Git is installed, open Terminal and run:
+
+```bash
+git clone https://github.com/akinayturan/local-audio-tools.git
+cd local-audio-tools
+```
+
+Alternatively, select **Code → Download ZIP** on GitHub, extract the archive, type `cd ` in Terminal, drag the extracted folder into the Terminal window, and press Return.
+
+Install the dependencies listed in [Installation on macOS](#installation-on-macos) before running the scripts.
+
+### 2. Add your audio file
+
+Copy your downloaded recording into the project folder, beside `transcribe.sh` and `m4a-to-mp4.sh`. Rename the recording to **`voice.m4a`** for the examples below. Make sure the filename is not accidentally `voice.m4a.m4a`.
+
+The folder should look like this before processing:
+
+```text
+local-audio-tools/
+├── README.md
+├── LICENSE
+├── .gitignore
+├── transcribe.sh
+├── m4a-to-mp4.sh
+└── voice.m4a          # Your recording; not included in the repository
+```
+
+### 3. Convert the recording to text
+
+From the project folder in Terminal, run:
 
 ```bash
 bash transcribe.sh voice.m4a
+```
+
+Wait for the command to finish. **`transcript/voice.txt` is written after the entire recording has been processed**, rather than updated live. To open the finished text file on macOS:
+
+```bash
+open transcript/voice.txt
+```
+
+Subtitle and structured transcript files are also saved in `transcript/`. See [Turkish transcription](#turkish-transcription) for output formats and progress monitoring.
+
+### 4. Create an MP4 video, if needed
+
+To create **`voice.mp4`** in the project folder, run:
+
+```bash
 bash m4a-to-mp4.sh voice.m4a
 ```
+
+The resulting video contains a black image and the recording's audio. To open it on macOS:
+
+```bash
+open voice.mp4
+```
+
+### Using another filename
+
+You do not have to rename your recording. Replace the input filename in either command, for example:
+
+```bash
+bash transcribe.sh "meeting recording.m4a"
+bash m4a-to-mp4.sh "meeting recording.m4a" "meeting video.mp4"
+```
+
+These commands produce `transcript/meeting recording.txt` (plus subtitle and structured files) and `meeting video.mp4`.
 
 Run only the command you need. The scripts are independent; transcription accepts the M4A file directly, so MP4 conversion is optional. Both scripts default to `voice.m4a` if no input argument is supplied. Quote filenames containing spaces.
 
